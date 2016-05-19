@@ -40,4 +40,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//$app->put('test/{cf_id}','TestListController@updateTest');
 
 	//$app->delete('test/{cf_id}','TestListController@deleteTest');
+
+	//tests
+	$app->get('tests/{test_id}','TestListController@getTest');
 });
