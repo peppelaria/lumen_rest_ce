@@ -20,24 +20,24 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 
     //user
 
-	$app->get('user','UserController@index');
+	//$app->get('user','UserController@index');
 
 	$app->get('user/{id}','UserController@getUser');
 
-	$app->post('user','UserController@createUser');
+	//$app->post('user','UserController@createUser');
 
-	$app->put('user/{id}','UserController@updateUser');
+	//$app->put('user/{id}','UserController@updateUser');
 
-	$app->delete('user/{id}','UserController@deleteUser');
+	//$app->delete('user/{id}','UserController@deleteUser');
 
     //Tests
-	$app->get('test','TestListController@index');
+	//$app->get('test','TestListController@index');
 
 	$app->get('test/{cf_id}','TestListController@getTest');
 
-	$app->post('test','TestListController@createTest');
+	//$app->post('test','TestListController@createTest');
 
-	$app->put('test/{cf_id}','TestListController@updateTest');
+	//$app->put('test/{cf_id}','TestListController@updateTest');
 
-	$app->delete('test/{cf_id}','TestListController@deleteTest');
+	//$app->delete('test/{cf_id}','TestListController@deleteTest');
 });

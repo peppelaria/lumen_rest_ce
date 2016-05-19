@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
   
   
 class UserController extends Controller{
-	public function index(){
+	/*public function index(){
   
         $Users  = User::all();
   
         return response()->json($Users);
   
-    }
+    }*/
   
     public function getUser($id){
   
@@ -23,7 +23,7 @@ class UserController extends Controller{
         return response()->json($User);
     }
   
-    public function createUser(Request $request){
+    /*public function createUser(Request $request){
   
         $User = User::create($request->all());
   
@@ -73,7 +73,7 @@ class UserController extends Controller{
         $User->save();
   
         return response()->json($User);
-    }
+    }*/
 
  
 }

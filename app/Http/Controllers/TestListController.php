@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
   
   
 class TestListController extends Controller{
-	public function index(){
+	/*public function index(){
   
         $Tests  = test::all();
   
         return response()->json($Tests);
   
-    }
+    }*/
   
     public function getTest($cf_id){
   
@@ -23,7 +23,7 @@ class TestListController extends Controller{
         return response()->json($test);
     }
   
-    public function createTest(Request $request){
+    /*public function createTest(Request $request){
   
         $Test = Test::create($request->all());
   
@@ -64,7 +64,7 @@ class TestListController extends Controller{
         $Test->save();
   
         return response()->json($Test);
-    }
+    }*/
 
  
 }
