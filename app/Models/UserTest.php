@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Test extends Model
+class UserTest extends Model
 {
 	protected $table = 'rcuz_chronoforms_data_test_table_json_updated';
 	protected $primaryKey = 'cf_id';

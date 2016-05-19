@@ -2,12 +2,12 @@
   
 namespace App\Http\Controllers;
   
-use App\Models\Test;
+use App\Models\UserTest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
   
-class TestListController extends Controller{
+class UserTestListController extends Controller{
 	/*public function index(){
   
         $Tests  = test::all();
@@ -18,7 +18,7 @@ class TestListController extends Controller{
   
     public function getTest($cf_id){
   
-        $test  = Test::find($cf_id);
+        $test  = UserTest::find($cf_id);
   
         return response()->json($test);
     }

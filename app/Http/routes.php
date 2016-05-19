@@ -33,7 +33,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
     //Tests
 	//$app->get('test','TestListController@index');
 
-	$app->get('test/{cf_id}','TestListController@getTest');
+	$app->get('test/{cf_id}','UserTestListController@getTest');
 
 	//$app->post('test','TestListController@createTest');
 
