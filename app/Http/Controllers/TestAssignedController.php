@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
   
-class UserTestListController extends Controller{
+class TestAssignedController extends Controller{
 	/*public function index(){
   
         $Tests  = test::all();
@@ -16,9 +16,9 @@ class UserTestListController extends Controller{
   
     }*/
   
-    public function getTest($student_id){
+    public function getTest($cf_id){
   
-        $test  = UserTest::where('student_id', '=', 12)->get();
+        $test  = UserTest::find($cf_id);
   
         return response()->json($test);
     }

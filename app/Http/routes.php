@@ -12,7 +12,7 @@
 */
 
 $app->get('/', function() use ($app) {
-	return "Lumen RESTful API By CoderExample (http://coderexample.com)";
+	return "<div>Corduatest API</div>";
 });
 
 $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], function($app)
@@ -33,7 +33,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
     //Tests
 	//$app->get('test','TestListController@index');
 
-	$app->get('test/{cf_id}','UserTestListController@getTest');
+	$app->get('test/{cf_id}','TestAssignedController@getTest');
 
 	//$app->post('test','TestListController@createTest');
 
@@ -44,4 +44,5 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//tests
 	$app->get('tests/{test_id}','TestListController@getTest');
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
+	$app->get('usertests/{student_id}','UserTestListController@getTest');
 });
