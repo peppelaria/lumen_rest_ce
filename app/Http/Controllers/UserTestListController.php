@@ -18,9 +18,9 @@ class UserTestListController extends Controller{
   
     public function getTest($student_id){
   
-        $test  = UserTest::where('student_id', '=', $student_id)->get();
+        $test  = UserTest::where('student_id', '=', $student_id)->where('recycle', '=', '0')->get();
   
-        return response()->json($test, JSON_UNESCAPED_SLASHES);
+        return response()->json($test);
     }
   
     /*public function createTest(Request $request){
