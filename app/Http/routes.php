@@ -44,5 +44,5 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//tests
 	$app->get('tests/{test_id}','TestListController@getTest');
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
-	$app->get('usertests/{student_id}','UserTestListController@getTest');
+	$app->get('user/{student_id}/tests','UserTestListController@getTest');
 });
