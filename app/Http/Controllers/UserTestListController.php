@@ -17,8 +17,9 @@ class UserTestListController extends Controller{
     }*/
   
     public function getTest($student_id){
-  
-        $test = UserTest::join('rcuz_chronoforms_data_test_archive', 'rcuz_chronoforms_data_test_table_json_updated.test_id', '=', 'rcuz_chronoforms_data_test_archive.test_id')->where('student_id', '=', $student_id)->where('test_done', '=', '0')->where('rcuz_chronoforms_data_test_table_json_updated.recycle', '=', '0')->groupBy('rcuz_chronoforms_data_test_table_json_updated.cf_created')->get(['test_name', 'rcuz_chronoforms_data_test_table_json_updated.cf_created']);
+        $testarch = "rcuz_chronoforms_data_test_archive";
+        $testassigned = "rcuz_chronoforms_data_test_table_json_updated";
+        $test = UserTest::leftJoin($testarch, $testassigned.'.test_id', '=', $testarch.'.test_id')->where('student_id', '=', $student_id)->where('test_done', '=', '0')->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.cf_created')->get(['test_name', $testassigned.'.cf_created']);
   
         return response()->json($test);
     }
