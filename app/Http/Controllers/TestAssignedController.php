@@ -20,7 +20,8 @@ class TestAssignedController extends Controller{
   
         $test  = UserTest::find($cf_id);
   
-        return response()->json($test);
+        $response = response()->json($test);
+        return str_replace("}\"","}",(str_replace("\"{","{",stripslashes($response->getContent()))));
     }
   
     /*public function createTest(Request $request){
