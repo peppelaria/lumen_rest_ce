@@ -34,6 +34,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//$app->get('test','TestListController@index');
 
 	$app->get('test/{cf_id}','TestAssignedController@getTest');
+	$app->put('test/{cf_id}','TestAssignedController@updateTest');
 
 	//$app->post('test','TestListController@createTest');
 
