@@ -19,8 +19,10 @@ class UserController extends Controller{
     public function getUser($id){
   
         $User  = User::find($id);
-  
-        return response()->json($User);
+        if ($User) {
+            return $this->createSuccessResponse($User, 200);
+        }
+        return $this->createErrorResponse("Risorsa non trovata", 404);
     }
   
     /*public function createUser(Request $request){

@@ -10,7 +10,10 @@ use Illuminate\Http\Request;
 class QuestionController extends Controller{
     public function getQuestion($cf_uid){
         $question  = Question::find($cf_uid);
-        return response()->json($question);
+        if ($question) {
+            return $this->createSuccessResponse($question, 200);
+        }
+        return $this->createErrorResponse("Risorsa non trovata", 404);
     } 
 }
 ?>
