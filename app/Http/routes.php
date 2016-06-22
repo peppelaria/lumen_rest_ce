@@ -12,7 +12,7 @@
 */
 
 $app->get('/', function() use ($app) {
-	return "<div>Corduatest API</div>";
+	return "<div>Aestiquatsi_API</div>";
 });
 
 $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], function($app)
@@ -46,4 +46,9 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	$app->get('tests/{test_id}','TestListController@getTest');
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
 	$app->get('user/tests/{student_id}','UserTestListController@getTest');
+
+	//authorization
+	$app->post('/oauth/access_token', function() use ($app) {
+		return response()->json($app->make('oauth2-server.authorizer')->issueAccessToken());
+	});
 });

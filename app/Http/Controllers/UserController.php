@@ -1,7 +1,8 @@
 <?php
   
 namespace App\Http\Controllers;
-  
+
+use App\Models;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class UserController extends Controller{
         return response()->json($Users);
   
     }*/
-  
+ 
     public function getUser($id){
   
         $User  = User::find($id);
