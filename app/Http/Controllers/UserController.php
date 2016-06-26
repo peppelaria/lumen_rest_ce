@@ -29,7 +29,7 @@ class UserController extends Controller{
 
     public function getMe($access_token){
         $tokens = "oauth_access_tokens";
-        $Me = Me::leftJoin('oauth_sessions as session', $tokens.'.session_id', '=', 'session.id')->leftJoin('rcuz_chronoforms_data_user_registration as user', 'session.owner_id', '=', 'user.cf_user_id')->where($tokens.'.id', '=', $access_token)->get(['user.id' ,'cf_user_id', 'name', 'surname']);
+        $Me = Me::leftJoin('oauth_sessions as session', $tokens.'.session_id', '=', 'session.id')->leftJoin('rcuz_chronoforms_data_user_registration as user', 'session.owner_id', '=', 'user.cf_user_id')->where($tokens.'.id', '=', $access_token)->get(['user.id', 'user.uniq_id','cf_user_id', 'name', 'surname']);
         if ($Me) {
             return $this->createSuccessResponse($Me, 200);
         }
