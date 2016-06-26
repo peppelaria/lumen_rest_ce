@@ -23,6 +23,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//$app->get('user','UserController@index');
 
 	$app->get('user/{id}','UserController@getUser');
+	$app->get('user/me/profile/{access_token}','UserController@getMe');
 
 	//$app->post('user','UserController@createUser');
 
