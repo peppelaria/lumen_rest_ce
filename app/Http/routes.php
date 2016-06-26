@@ -23,7 +23,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//$app->get('user','UserController@index');
 
 	$app->get('user/{id}','UserController@getUser');
-	$app->get('user/me/profile/{access_token}','UserController@getMe');
+	$app->get('user/me/profile/{access_token}','MeController@getMe');
 
 	//$app->post('user','UserController@createUser');
 
@@ -46,7 +46,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//tests
 	$app->get('tests/{test_id}','TestListController@getTest');
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
-	$app->get('user/tests/{student_id}','UserTestListController@getTest');
+	$app->get('user/tests/{access_token}','UserTestListController@getTest');
 
 	//authorization
 	$app->post('/oauth/access_token', function() use ($app) {

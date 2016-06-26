@@ -6,9 +6,9 @@ use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    public function __construct() {
+/*    public function __construct() {
         $this->middleware('oauth');
-    }
+    }*/
 
     public function createSuccessResponse($data, $code) {
         $response = response()->json(['data' => $data], $code);

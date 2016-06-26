@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models;
-use App\Models\User;
+use App\Models\Me;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
   
-class UserController extends Controller{
+class MeController extends Controller{
 	/*public function index(){
   
         $Users  = User::all();
@@ -16,12 +16,13 @@ class UserController extends Controller{
         return response()->json($Users);
   
     }*/
- 
-    public function getUser($id){
-  
-        $User = User::find($id);
-        if ($User) {
-            return $this->createSuccessResponse($User, 200);
+
+    public function getMe($access_token) {
+        $tokens = "oauth_access_tokens";
+        $Me = Me::leftJoin('oauth_sessions as session', $tokens.'.session_id', '=', 'session.id')->leftJoin('rcuz_chronoforms_data_user_registration as user', 'session.owner_id', '=', 'user.cf_user_id')->where($tokens.'.id', '=', $access_token)->get(['user.id', 'user.uniq_id','cf_user_id', 'name', 'surname']);
+        if ($Me) {
+            //return $this->createSuccessResponse($Me, 200);
+            return $Me;
         }
         return $this->createErrorResponse("Risorsa non trovata", 404);
     }
