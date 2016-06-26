@@ -6,7 +6,6 @@ use App\Models\UserTest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
-  
 class UserTestListController extends Controller{
 	/*public function index(){
   
@@ -15,8 +14,8 @@ class UserTestListController extends Controller{
 		return response()->json($Tests);
   
 	}*/
-  
-	public function getTest($student_id){
+  	
+	public function getTest($student_id) {
 		$now=date("Y-m-d",time());
 		$testassigned = "rcuz_chronoforms_data_test_table_json_updated";
 		$test = UserTest::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where('student_id', '=', $student_id)->where('end_available_date', '>=', $now)->where('test_done', '=', '0')->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.cf_created')->get(['test_uid', 'test_name', $testassigned.'.cf_created']);
