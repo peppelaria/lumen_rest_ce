@@ -22,7 +22,7 @@ class MeController extends Controller{
         $Me = Me::leftJoin('oauth_sessions as session', $tokens.'.session_id', '=', 'session.id')->leftJoin('rcuz_chronoforms_data_user_registration as user', 'session.owner_id', '=', 'user.cf_user_id')->where($tokens.'.id', '=', $access_token)->get(['user.id', 'user.uniq_id','cf_user_id', 'name', 'surname']);
         if ($Me) {
             //return $this->createSuccessResponse($Me, 200);
-            return $Me;
+            return str_replace(array("[", "]"), "", $Me);
         }
         return $this->createErrorResponse("Risorsa non trovata", 404);
     }

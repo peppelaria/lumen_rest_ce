@@ -34,9 +34,6 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
     //Tests
 	//$app->get('test','TestListController@index');
 
-	$app->get('test/{cf_id}','TestAssignedController@getTest');
-	$app->put('test/{cf_id}','TestAssignedController@updateTest');
-
 	//$app->post('test','TestListController@createTest');
 
 	//$app->put('test/{cf_id}','TestListController@updateTest');
@@ -44,9 +41,11 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//$app->delete('test/{cf_id}','TestListController@deleteTest');
 
 	//tests
-	$app->get('tests/{test_id}','TestListController@getTest');
+	$app->get('testinfo/{test_uid}','TestController@getTest');
+	$app->put('user/{student_id}/test/{test_uid}','TestController@updateTest');
+	$app->get('user/{student_id}/test_list','UserTestListController@getTest');
+
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
-	$app->get('user/tests/{access_token}','UserTestListController@getTest');
 
 	//authorization
 	$app->post('/oauth/access_token', function() use ($app) {

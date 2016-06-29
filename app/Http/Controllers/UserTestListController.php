@@ -6,7 +6,7 @@ use App\Models\UserTest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
   
-class UserTestListController extends MeController{
+class UserTestListController extends Controller{
 	/*public function index(){
   
 		$Tests  = test::all();
@@ -15,13 +15,13 @@ class UserTestListController extends MeController{
   
 	}*/
   	
-	public function getTest($access_token) {
-		$user = MeController::getMe($access_token);
+	public function getTest($student_id) {
+/*		$user = MeController::getMe($access_token);*/
 /*		$user = json_decode($user, TRUE);*/
-		$student_id = $user['0']['cf_user_id'];
+/*		$student_id = $user['0']['cf_user_id'];*/
 		$now=date("Y-m-d",time());
 		$testassigned = "rcuz_chronoforms_data_test_table_json_updated";
-		$test = UserTest::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where('student_id', '=', $student_id)->where('end_available_date', '>=', $now)->where('test_done', '=', '0')->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.cf_created')->get(['test_uid', 'test_name', $testassigned.'.cf_created']);
+		$test = UserTest::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where('student_id', '=', $student_id)->where('end_available_date', '>=', $now)->where('test_done', '=', '0')->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.cf_created')->get(['test_uid', 'test_name', $testassigned.'.cf_created', $testassigned.'.end_available_date']);
 		if ($test) {
 			return $this->createSuccessResponse($test, 200);
 		}
