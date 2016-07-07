@@ -14,7 +14,7 @@ class TestController extends Controller{
     
     public function getTest($test_uid){
         $testassigned = "rcuz_chronoforms_data_test_table_json_updated";
-        $test = Test::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where($testassigned.'.test_uid', '=', $test_uid)->groupBy('testarch.test_id')->get(['test_uid', 'test_name', 'test_type', 'test_time', $testassigned.'.cf_created', $testassigned.'.cf_modified', $testassigned.'.test_started', $testassigned.'.start_time', $testassigned.'.test_questions']);
+        $test = Test::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where($testassigned.'.test_uid', '=', $test_uid)->groupBy('testarch.test_id')->get(['test_uid', 'test_name', 'test_type', 'test_time', $testassigned.'.cf_created', $testassigned.'.cf_modified', $testassigned.'.test_started', $testassigned.'.start_time', $testassigned.'.end_time', $testassigned.'.test_questions', 'rightAnswerPoints', 'wrongAnswerPoints']);
        	if ($test) {
 			/*return $this->createSuccessResponse($test, 200);*/
             return str_replace("}\"","}",(str_replace("\"{","{",substr(stripslashes($test), 1, -1))));
@@ -49,7 +49,7 @@ class TestController extends Controller{
   
         if ($test) {
             /*return $this->createSuccessResponse($test, 200);*/
-            return str_replace("}\"","}",(str_replace("\"{","{",substr(stripslashes($test), 1, -1))));
+            return "{".str_replace("}\"","}",(str_replace("\"{","{",substr(stripslashes($test), 1, -1))))."}";
         }
         return $this->createErrorResponse("Risorsa non trovata", 404);
     }
