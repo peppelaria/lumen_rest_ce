@@ -43,7 +43,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 	//tests
 	$app->get('testinfo/{test_uid}','TestController@getTest');
 	$app->put('user/{student_id}/test/{test_uid}','TestController@updateTest');
-	$app->get('user/{student_id}/test_list','UserTestListController@getTest');
+	$app->get('user/{student_id}/test_list/{done}','UserTestListController@getTest');
 
 	$app->get('question/{cf_uid}','QuestionController@getQuestion');
 
