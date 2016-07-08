@@ -29,7 +29,7 @@ class UserTestListController extends Controller{
 			$limit = '-inf';
 		}
 		$testassigned = "rcuz_chronoforms_data_test_table_json_updated";
-		$test = UserTest::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where('student_id', '=', $student_id)->where('end_available_date', '>=', $limit)->where('test_done', '=', $test_done)->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.test_uid')->get(['test_uid', 'test_name', $testassigned.'.cf_created', $testassigned.'.end_available_date']);
+		$test = UserTest::leftJoin('rcuz_chronoforms_data_test_archive as testarch', $testassigned.'.test_id', '=', 'testarch.test_id')->where('student_id', '=', $student_id)->where('end_available_date', '>=', $limit)->where('test_done', '=', $test_done)->where($testassigned.'.recycle', '=', '0')->groupBy($testassigned.'.test_uid')->get(['test_uid', 'test_name', $testassigned.'.cf_created', $testassigned.'.end_available_date', $testassigned.'.end_time']);
 		if ($test) {
 			return $this->createSuccessResponse($test, 200);
 		}
